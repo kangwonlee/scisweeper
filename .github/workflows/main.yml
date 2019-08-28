@@ -17,11 +17,18 @@ jobs:
         PYVER: ${{ matrix.python-version }}
       run: |
         export PATH="$CONDA/bin:$PATH"
+        echo "conda init bash ========================"
         conda init bash
+        echo ". ~/.bashrc ============================"
         . ~/.bashrc
+        echo "conda update -q conda =================="
         conda update -q conda
+        echo "conda create ==========================="
         conda create -n scisweeper -q --yes -c conda-forge coverage pandas scandir h5io numpy pysqa tqdm pip python=${PYVER}
+        echo "conda activate scisweeper =============="
         conda activate scisweeper
+        echo "pip install --pre ======================"
         pip install --pre .
         conda list
+        echo "test ==================================="
         coverage run -m unittest discover tests
