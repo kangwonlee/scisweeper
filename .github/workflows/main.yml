@@ -33,7 +33,7 @@ jobs:
         echo ". ~/.bashrc ============================"
         . ~/.bashrc
         echo "conda activate scisweeper =============="
-        conda activate scisweeper
+        source activate scisweeper
         echo "pip install --pre ======================"
         pip install --pre .
         conda list
