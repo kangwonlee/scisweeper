@@ -26,7 +26,7 @@ jobs:
         echo ". ~/.bashrc ============================"
         . ~/.bashrc
         echo "conda create ==========================="
-        conda create -n scisweeper -q --yes -c conda-forge coverage pandas scandir h5io numpy pysqa tqdm pip python=${PYVER}
+        conda env create -n scisweeper -q --yes -c conda-forge coverage pandas scandir h5io numpy pysqa tqdm pip python=${PYVER}
         echo "conda activate scisweeper =============="
         conda activate scisweeper
         echo "pip install --pre ======================"
