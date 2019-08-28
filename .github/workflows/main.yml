@@ -21,7 +21,7 @@ jobs:
         . ~/.bashrc
         conda update -q conda
         conda create -n scisweeper -q --yes -c conda-forge coverage pandas scandir h5io numpy pysqa tqdm pip python=${PYVER}
-        pip install --pre .
         conda activate scisweeper
+        pip install --pre .
         conda list
         coverage run -m unittest discover tests
