@@ -21,6 +21,8 @@ jobs:
         conda init bash
         echo ". ~/.bashrc ============================"
         . ~/.bashrc
+        echo "hash -r ================================"
+        hash -r
         echo "conda update -q conda =================="
         conda update -q conda
         echo "conda create ==========================="
