@@ -24,9 +24,10 @@ jobs:
         echo "hash -r ================================"
         hash -r
         echo "conda update -q conda =================="
+        conda config --set always_yes yes --set changeps1 no;
         conda update -q conda
         echo "conda create ==========================="
-        conda create --name scisweeper --quiet --yes --channel python=${PYVER} conda-forge coverage pandas scandir h5io numpy pysqa tqdm pip
+        conda create --name scisweeper --quiet --yes --channel conda-forge python=${PYVER} coverage pandas scandir h5io numpy pysqa tqdm pip
         echo "conda activate scisweeper =============="
         conda activate scisweeper
         echo "pip install --pre ======================"
