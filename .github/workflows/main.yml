@@ -26,7 +26,7 @@ jobs:
         echo "conda update -q conda =================="
         conda update -q conda
         echo "conda create ==========================="
-        conda create --name scisweeper --quiet --yes --channel conda-forge coverage pandas scandir h5io numpy pysqa tqdm pip python=${PYVER}
+        conda create --name scisweeper --quiet --yes --channel python=${PYVER} conda-forge coverage pandas scandir h5io numpy pysqa tqdm pip
         echo "conda activate scisweeper =============="
         conda activate scisweeper
         echo "pip install --pre ======================"
