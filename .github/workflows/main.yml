@@ -23,8 +23,6 @@ jobs:
         . ~/.bashrc
         echo "conda update -q conda =================="
         conda update -q conda
-        echo ". ~/.bashrc ============================"
-        . ~/.bashrc
         echo "conda create ==========================="
         conda env create -n scisweeper -q --yes -c conda-forge coverage pandas scandir h5io numpy pysqa tqdm pip python=${PYVER}
         echo "conda activate scisweeper =============="
