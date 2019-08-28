@@ -12,19 +12,30 @@ jobs:
         python-version: [2.7, 3.6, 3.7]
     steps:
     - uses: actions/checkout@v1
-    - name: Update conda
-      run: conda update -q conda
-    - name: Install Dependences
-      run: conda create -n scisweeper -q --yes -c conda-forge coverage pandas scandir h5io numpy pysqa tqdm pip python=${PYVER}
+    - name: install dependencies and test
       env:
         PYVER: ${{ matrix.python-version }}
-    - name: Install package 
       run: |
-        export PATH="/usr/share/miniconda/bin:$PATH"
+        export PATH="$CONDA:$CONDA/bin:$PATH"
+        echo "conda init bash ========================"
+        conda init bash
+        echo ". ~/.bashrc ============================"
+        . ~/.bashrc
+        echo "hash -r ================================"
+        hash -r
+        echo "conda update -q conda =================="
+        conda config --set always_yes yes --set changeps1 no;
+        conda update -q conda
+        echo "conda create ==========================="
+        conda create --name scisweeper --quiet --yes --channel conda-forge python=${PYVER} coverage pandas scandir h5io numpy pysqa tqdm pip
+        echo "conda init bash ========================"
+        conda init bash
+        echo ". ~/.bashrc ============================"
+        . ~/.bashrc
+        echo "source activate scisweeper =============="
         source activate scisweeper
+        echo "pip install --pre ======================"
         pip install --pre .
-    - name: Test with coverage
-      run: |
-        export PATH="/usr/share/miniconda/bin:$PATH"
-        source activate scisweeper
+        conda list
+        echo "test ==================================="
         coverage run -m unittest discover tests
