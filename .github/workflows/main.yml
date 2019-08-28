@@ -16,7 +16,7 @@ jobs:
       env:
         PYVER: ${{ matrix.python-version }}
       run: |
-        export PATH="$CONDA/bin:$PATH"
+        export PATH="$CONDA:$CONDA/bin:$PATH"
         echo "conda init bash ========================"
         conda init bash
         echo ". ~/.bashrc ============================"
